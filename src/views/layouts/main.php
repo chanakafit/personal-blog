@@ -33,23 +33,15 @@ AppAsset::register( $this );
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
-            <ul>
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+	    <?php include( '_navbar.php' ) ?>
 
         <div class="header-social-links">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+<!--            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>-->
+            <a href="https://facebook.com/chanaka.suranga" class="facebook" target="_blank" data-toggle="tooltip" title="Facebook"><i class="bi bi-facebook"></i></a>
+<!--            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>-->
+            <a href="https://linkedin.com/in/chanakalk" class="linkedin" target="_blank" data-toggle="tooltip" title="Linked In"><i class="bi bi-linkedin"></i></i></a>
+            <a href="https://stackoverflow.com/users/4309588/chanaka-karunarathne" class="" target="_blank" data-toggle="tooltip" title="Stack Overflow"><i class="bi bi-stack"></i></i></a>
+            <a href="https://www.freelancer.com/u/chanakasuranga91" class="" target="_blank" data-toggle="tooltip" title="Freelancer"><i class="bi bi-laptop-fill"></i></i></a>
         </div>
 
     </div>
@@ -68,7 +60,7 @@ AppAsset::register( $this );
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Design Credits <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
     </div>
 </footer><!-- End  Footer -->
