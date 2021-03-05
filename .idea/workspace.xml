@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10d4d513-ee24-4f85-998c-b3a3ad19c264" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/layouts/_navbar.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/site/resume.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theme/assets/img/about.jpg" afterPath="$PROJECT_DIR$/src/theme/assets/img/about.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theme/assets/img/hero-bg.png" afterPath="$PROJECT_DIR$/src/theme/assets/img/hero-bg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/SiteController.php" afterPath="$PROJECT_DIR$/src/controllers/SiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/theme/assets/css/style.css" afterPath="$PROJECT_DIR$/src/theme/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/layouts/main.php" afterPath="$PROJECT_DIR$/src/views/layouts/main.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/site/about.php" afterPath="$PROJECT_DIR$/src/views/site/about.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/site/index.php" afterPath="$PROJECT_DIR$/src/views/site/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/site/resume.php" afterPath="$PROJECT_DIR$/src/views/site/resume.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.72238517">
+    <splitter split-orientation="horizontal" split-proportion="0.82339525">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
           <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
@@ -49,13 +41,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="about.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="about.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/views/site/about.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="507">
-                  <caret line="303" column="106" lean-forward="false" selection-start-line="303" selection-start-column="106" selection-end-line="303" selection-end-column="106" />
+                <state relative-caret-position="937">
+                  <caret line="241" column="55" lean-forward="true" selection-start-line="241" selection-start-column="55" selection-end-line="241" selection-end-column="55" />
                   <folding>
-                    <marker date="1614965666322" expanded="true" signature="14844:14886" ph="..." />
+                    <marker date="1614973087188" expanded="true" signature="15256:15298" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -74,11 +66,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="resume.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="resume.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/views/site/resume.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="258">
-                  <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+                <state relative-caret-position="664">
+                  <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -218,9 +210,9 @@
         <option value="$PROJECT_DIR$/src/views/site/index.php" />
         <option value="$PROJECT_DIR$/src/theme/assets/css/style.css" />
         <option value="$PROJECT_DIR$/src/views/layouts/main.php" />
-        <option value="$PROJECT_DIR$/src/views/site/about.php" />
         <option value="$PROJECT_DIR$/src/controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/src/views/site/resume.php" />
+        <option value="$PROJECT_DIR$/src/views/site/about.php" />
       </list>
     </option>
   </component>
@@ -381,12 +373,12 @@
       <option name="presentableId" value="Default" />
       <updated>1614704328066</updated>
       <workItem from="1614704329326" duration="52856000" />
-      <workItem from="1614956399580" duration="6093000" />
+      <workItem from="1614956399580" duration="8679000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58949000" />
+    <option name="totallyTimeSpent" value="61535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="135" y="-14" width="3719" height="2188" extended-state="6" />
@@ -441,7 +433,7 @@
         <state relative-caret-position="2666">
           <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
           <folding>
-            <marker date="1614965666322" expanded="true" signature="14844:14886" ph="..." />
+            <marker date="1614973087188" expanded="true" signature="15256:15298" ph="..." />
           </folding>
         </state>
       </provider>
@@ -632,7 +624,7 @@
     <entry file="file://$PROJECT_DIR$/src/views/site/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="688">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="e#38#59#0#PHP" expanded="true" />
           </folding>
@@ -656,16 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/site/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="303" column="106" lean-forward="false" selection-start-line="303" selection-start-column="106" selection-end-line="303" selection-end-column="106" />
-          <folding>
-            <marker date="1614965666322" expanded="true" signature="14844:14886" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1352">
@@ -685,14 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/site/resume.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/theme/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
@@ -706,6 +680,24 @@
         <state relative-caret-position="516">
           <caret line="48" column="12" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/site/resume.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/site/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="937">
+          <caret line="241" column="55" lean-forward="true" selection-start-line="241" selection-start-column="55" selection-end-line="241" selection-end-column="55" />
+          <folding>
+            <marker date="1614973087188" expanded="true" signature="15256:15298" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
