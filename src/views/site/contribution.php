@@ -33,14 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="resume-title">Open Source</h3>
                 <div class="resume-item">
                     <h4><a href="https://github.com/justcoded/yii2-starter"> Yii 2 JustCoded Project Template</a></h4>
-                    <h5>GitHub</h5>
-                    <p><em>Yii 2 JustCoded Project Template is a skeleton Yii 2 application best for rapidly creating
-                            projects with admin interface and RBAC.</em></p>
+                    <p>GitHub</p>
                 </div>
                 <div class="resume-item">
                     <h4><a href="https://github.com/bee48/CFMS"> Customer Feedback Management System</a></h4>
-                    <h5>GitHub</h5>
-                    <p><em>Customer Feedback Management System (Open Source).</em></p>
+                    <p>GitHub</p>
+                </div>
+                <div class="resume-item">
+                    <h4><a href="https://github.com/chanakafit/personal-blog"> Personal Portfolio and Blog Template</a></h4>
+                    <p>GitHub</p>
                 </div>
 
             </div>
