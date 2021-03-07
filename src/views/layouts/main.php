@@ -35,6 +35,7 @@ AppAsset::register( $this );
 
 	    <?php include( '_navbar.php' ) ?>
 
+
         <div class="header-social-links">
 <!--            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>-->
             <a href="https://facebook.com/chanaka.suranga" class="facebook" target="_blank" data-toggle="tooltip" title="Facebook"><i class="bi bi-facebook"></i></a>

@@ -47,6 +47,16 @@ $navItems = [
 			</a>
 		</li>
 		<?php endforeach; ?>
+
+		<?php if(!Yii::$app->user->isGuest) : ?>
+        <li>
+            <a href="<?= Url::to(['site/logout']) ?>" class="text-danger">
+		        Logout (<?= Yii::$app->user->identity->username?>)
+            </a>
+
+        </li>
+
+        <?php endif; ?>
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>
 </nav>
