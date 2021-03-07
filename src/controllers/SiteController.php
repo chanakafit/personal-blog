@@ -135,4 +135,14 @@ class SiteController extends Controller
     {
         return $this->render('resume');
     }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionContribution()
+    {
+        return $this->render('contribution');
+    }
 }

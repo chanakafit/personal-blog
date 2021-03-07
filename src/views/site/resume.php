@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title                   = 'About';
+$this->title = Yii::$app->name.' | Resume';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main id="main">
@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         </p>
                     </div>
 
+                    <hr/>
+
                     <h3 class="resume-title">Education</h3>
                     <div class="resume-item">
                         <h4>Bachelor of Science (Hons) in IT & Management</h4>
@@ -50,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p>I studied Advanced level in Physical Science Stream and passed with AAC in 2011.</p>
                     </div>
 
+                    <hr/>
                     <h3 class="resume-title">Freelance</h3>
                     <div class="resume-item">
                         <h4>Software Developer</h4>

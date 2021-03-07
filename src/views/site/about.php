@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title                   = 'About';
+$this->title = Yii::$app->name.' | About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main id="main">
@@ -114,7 +114,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
 
-
                     <div class="progress">
                         <span class="skill">Angular <i class="val">30%</i></span>
                         <div class="progress-bar-wrap">
@@ -123,7 +122,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
 
-
                     <div class="progress">
                         <span class="skill">Laravel <i class="val">30%</i></span>
                         <div class="progress-bar-wrap">
@@ -131,6 +129,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                  aria-valuemax="100"></div>
                         </div>
                     </div>
+
+                    <hr/>
 
                     <h4>Databases</h4>
 
@@ -219,6 +219,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
 
+                    <hr/>
+
                     <h4>Other Technologies</h4>
 
                     <div class="progress">
@@ -271,7 +273,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="752" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="762" data-purecounter-duration="1"
                           class="purecounter"></span>
                     <p>Stack Overflow Reputation</p>
                 </div>
@@ -283,9 +285,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1"
                           class="purecounter"></span>
-                    <p>Open Source Contribution</p>
+                    <p>Projects</p>
                 </div>
 
             </div>

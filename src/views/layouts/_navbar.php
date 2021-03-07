@@ -25,11 +25,6 @@ $navItems = [
 		'active' => ( Yii::$app->requestedRoute == 'site/resume' ),
 	],
 	[
-		'label'  => 'Services',
-		'url'    => [ 'site/services' ],
-		'active' => ( Yii::$app->requestedRoute == 'site/services' ),
-	],
-	[
 		'label'  => 'Contribution',
 		'url'    => [ 'site/contribution' ],
 		'active' => ( Yii::$app->requestedRoute == 'site/contribution' ),
