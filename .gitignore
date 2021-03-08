@@ -1,3 +1,4 @@
 .idea
-assets
 src/config/db.php
+/src/composer.lock
+/src/config/db.php
