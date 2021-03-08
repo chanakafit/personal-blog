@@ -48,6 +48,7 @@ AppAsset::register( $this );
     </div>
 
 </header><!-- End Header -->
+<?= \diecoding\toastr\ToastrFlash::widget(); ?>
 
 <?= $content ?>
 <!-- ======= Footer ======= -->
