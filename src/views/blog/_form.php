@@ -22,7 +22,6 @@ use yii\helpers\Html;
 
 <?= $form->field( $model, 'title' )->textInput( [
 	'maxlength' => true,
-	''
 ] ) ?>
 
 <?= $form->field( $model, 'content' )->widget(
