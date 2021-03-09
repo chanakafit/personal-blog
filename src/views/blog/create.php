@@ -5,16 +5,25 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
 
-$this->title = Yii::t('app', 'Create Blog');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Blogs'), 'url' => ['index']];
+$this->title                   = Yii::t( 'app', 'Create Blog' );
+$this->params['breadcrumbs'][] = [ 'label' => Yii::t( 'app', 'Blogs' ), 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="blog-create">
+<main id="main">
+    <section id="resume" class="resume">
+        <div class="container" data-aos="fade-up">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+            <div class="section-title">
+                <h2>Create Post</h2>
+            </div>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+            <div class="row">
+				<?= $this->render( '_form', [
+					'model' => $model,
+				] ) ?>
 
-</div>
+            </div>
+        </div>
+    </section>
+</main>
+

@@ -3,22 +3,25 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%blog}}".
  *
  * @property int $id
- * @property string|null $title
- * @property string|null $content
- * @property string|null $slug
- * @property string|null $cover_image
- * @property string|null $category
+ * @property string $title
+ * @property string $content
+ * @property string $slug
+ * @property string $cover_image
+ * @property string $category
  * @property string|null $tags
  * @property string $created_at
  * @property string $updated_at
  * @property int|null $created_by
+ *
+ * @property User $createdBy
  */
-class Blog extends \yii\db\ActiveRecord
+class Blog extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -34,11 +37,13 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title', 'content', 'slug', 'cover_image', 'category'], 'required'],
             [['content'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by'], 'integer'],
             [['title', 'slug', 'cover_image', 'category'], 'string', 'max' => 1000],
             [['tags'], 'string', 'max' => 255],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
 
@@ -59,5 +64,15 @@ class Blog extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
         ];
+    }
+
+    /**
+     * Gets query for [[CreatedBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 }
