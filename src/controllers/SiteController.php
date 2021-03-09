@@ -13,113 +13,105 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\ContactForm;
 
-class SiteController extends Controller
-{
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
-    }
+class SiteController extends Controller {
+	/**
+	 * {@inheritdoc}
+	 */
+	public function behaviors() {
+		return [
+			'access' => [
+				'class' => AccessControl::className(),
+				'only'  => [ 'logout' ],
+				'rules' => [
+					[
+						'actions' => [ 'logout' ],
+						'allow'   => true,
+						'roles'   => [ '@' ],
+					],
+				],
+			],
+		];
+	}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function actions() {
+		return [
+			'error'   => [
+				'class' => 'yii\web\ErrorAction',
+			],
+			'captcha' => [
+				'class'           => 'yii\captcha\CaptchaAction',
+				'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+			],
+		];
+	}
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
+	/**
+	 * Displays homepage.
+	 *
+	 * @return string
+	 */
+	public function actionIndex() {
+		return $this->render( 'index' );
+	}
 
-    /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
+	/**
+	 * Logout action.
+	 *
+	 * @return Response
+	 */
+	public function actionLogout() {
+		Yii::$app->user->logout();
 
-        return $this->goHome();
-    }
+		return $this->goHome();
+	}
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+	/**
+	 * Displays contact page.
+	 *
+	 * @return Response|string
+	 */
+	public function actionContact() {
+		$model = new ContactForm();
+		if ( $model->load( Yii::$app->request->post() ) && $model->contact( Yii::$app->params['adminEmail'] ) ) {
+			Yii::$app->session->setFlash( 'contactFormSubmitted' );
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
+			return $this->refresh();
+		}
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
+		return $this->render( 'contact', [
+			'model' => $model,
+		] );
+	}
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionResume()
-    {
-        return $this->render('resume');
-    }
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionAbout() {
+		return $this->render( 'about' );
+	}
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionContribution()
-    {
-        return $this->render('contribution');
-    }
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionResume() {
+		return $this->render( 'resume' );
+	}
+
+	/**
+	 * Displays about page.
+	 *
+	 * @return string
+	 */
+	public function actionContribution() {
+		return $this->render( 'contribution' );
+	}
 
 	/**
 	 * Login action.
@@ -153,11 +145,11 @@ class SiteController extends Controller
 		$model = new PasswordResetRequestForm();
 		if ( $model->load( Yii::$app->request->post() ) && $model->validate() ) {
 			if ( $model->sendEmail() ) {
-				Yii::$app->session->setFlash( 'success', 'Check your email for further instructions.' );
+				Yii::$app->session->setFlash( 'success', Yii::t( 'app', 'Check your email for further instructions.' ) );
 
 				return $this->goHome();
 			} else {
-				Yii::$app->session->setFlash( 'error', 'Sorry, we are unable to reset password for the provided email address.' );
+				Yii::$app->session->setFlash( 'error', Yii::t( 'app', 'Sorry, we are unable to reset password for the provided email address.' ) );
 			}
 		}
 
@@ -179,11 +171,12 @@ class SiteController extends Controller
 			$model = new ResetPasswordForm( $token );
 		} catch ( \Exception $e ) {
 			Yii::$app->session->setFlash( 'error', $e->getMessage() );
+
 			return $this->goHome();
 		}
 
 		if ( $model->load( Yii::$app->request->post() ) && $model->validate() && $model->resetPassword() ) {
-			Yii::$app->session->setFlash( 'success', 'New password saved.' );
+			Yii::$app->session->setFlash( 'success', Yii::t( 'app', 'New password saved.' ) );
 
 			return $this->goHome();
 		}

@@ -5,3 +5,13 @@
 *.map
 *.less
 *.scss
+*Gemfile
+*LICENSE
+*bootstrap
+*.rb
+*.erb
+*.ico
+*script*
+*.lock
+*test
+*.png
