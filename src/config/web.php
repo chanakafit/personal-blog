@@ -67,7 +67,7 @@ $config = [
 
 			// the list of custom conversion patterns for post processing
 			'customConversion' => [
-				'<table>' => '<table class="table table-bordered table-striped">'
+				'<table>' => '<table class="table table-bordered table-striped">',
 			],
 
 			// whether to use PHP SmartyPantsTypographer to process Markdown output
