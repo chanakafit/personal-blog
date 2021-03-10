@@ -8,6 +8,7 @@ This repositary contains the [chanakalk.com](https://chanakalk.com) Source code.
 - [ ] Personal Blog
   - [x] Markdown editor Support
   - [x] WYSISYG editor Support
+  - [ ] Tags and Categories
 - [ ] Discussion Section
 - [ ] Social Login Support
 - [ ] Portfolio section
