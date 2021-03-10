@@ -20,7 +20,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "diecoding/yii2-toastr": "*",
         "kartik-v/yii2-markdown": "dev-master",
-        "erusev/parsedown": "dev-master"
+        "mihaildev/yii2-ckeditor": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

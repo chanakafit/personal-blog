@@ -1,6 +1,7 @@
 <?php
 
 use kartik\markdown\MarkdownEditor;
+use mihaildev\ckeditor\CKEditor;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
@@ -24,10 +25,25 @@ use yii\helpers\Html;
 	'maxlength' => true,
 ] ) ?>
 
-<?= $form->field( $model, 'content' )->widget(
-	MarkdownEditor::class,
-	['height' => 300, 'encodeLabels' => false]
-) ?>
+<?php if ( Yii::$app->params['editor'] == 'wysiwyg' ): ?>
+
+	<?= $form->field( $model, 'content' )->widget( CKEditor:: class, [
+		'editorOptions' => [
+			'preset' => 'full',
+			// standard settings developed basic, standard, full this feature is not required to use
+			'inline' => false,
+			// by default false
+		],
+	] ) ?>
+
+<?php else: ?>
+
+	<?= $form->field( $model, 'content' )->widget(
+		MarkdownEditor::class,
+		[ 'height' => 300, 'encodeLabels' => false ]
+	) ?>
+
+<?php endif; ?>
 
 <?= $form->field( $model, 'slug' )->textInput( [ 'maxlength' => true ] ) ?>
 
