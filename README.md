@@ -6,5 +6,5 @@ This repositary contains the [chanakalk.com](https://chanakalk.com) Source code.
 
 - [x] Personal Website including Homepage, Resume, About, Contribution Sections
 - [ ] Personal Blog
-- [ ] Markdown editor Support
-- [ ] WYSISYG editor Support
+- [x] Markdown editor Support
+- [x] WYSISYG editor Support
