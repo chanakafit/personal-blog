@@ -17,6 +17,7 @@ use yii\helpers\Html;
 <?php $form = ActiveForm::begin( [
 	'id'          => 'create-post',
 	'layout'      => 'horizontal',
+	'options' => ['enctype' => 'multipart/form-data'],
 	'fieldConfig' => [
 //		'template'     => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
 		'template'     => "<div class=\"form-group row\">{label}<div class=\"col-sm-10\">{input}</div></div>\n<div class='col-lg-8' style='color: red'>{error}</div>",
@@ -50,7 +51,8 @@ use yii\helpers\Html;
 
 <?= $form->field( $model, 'slug' )->textInput( [ 'maxlength' => true ] ) ?>
 
-<?= $form->field( $model, 'cover_image' )->fileInput() ?>
+<?= $form->field( $model, 'image_file' )->fileInput() ?>
+
 
 <?= $form->field( $model, 'categories' )->widget(Select2::class, [
 	'data' => $categories,

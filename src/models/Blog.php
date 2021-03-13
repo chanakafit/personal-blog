@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "{{%blog}}".
@@ -21,109 +22,125 @@ use yii\db\ActiveRecord;
  *
  * @property User $createdBy
  */
-class Blog extends ActiveRecord
-{
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return '{{%blog}}';
-    }
+class Blog extends ActiveRecord {
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['title', 'content', 'slug', 'categories'], 'required'],
-            [['content'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
-            [['created_by'], 'integer'],
-            [['title', 'slug', 'cover_image'], 'string', 'max' => 1000],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-        ];
-    }
+	/**
+	 * @var UploadedFile
+	 */
+	public $image_file;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
-            'content' => Yii::t('app', 'Content'),
-            'slug' => Yii::t('app', 'Slug'),
-            'cover_image' => Yii::t('app', 'Cover Image'),
-            'categories' => Yii::t('app', 'Categories'),
-            'tags' => Yii::t('app', 'Tags'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'created_by' => Yii::t('app', 'Created By'),
-        ];
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public static function tableName() {
+		return '{{%blog}}';
+	}
 
-    /**
-     * Gets query for [[CreatedBy]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCreatedBy()
-    {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function rules() {
+		return [
+			[ [ 'title', 'content', 'slug', 'categories' ], 'required' ],
+			[ [ 'content' ], 'string' ],
+			[ [ 'image_file' ], 'file', 'skipOnError' => false, 'extensions' => 'png, jpg' ],
+			[ [ 'created_at', 'updated_at' ], 'safe' ],
+			[ [ 'created_by' ], 'integer' ],
+			[ [ 'title', 'slug' ], 'string', 'max' => 1000 ],
+			[
+				[ 'created_by' ],
+				'exist',
+				'skipOnError'     => true,
+				'targetClass'     => User::class,
+				'targetAttribute' => [ 'created_by' => 'id' ]
+			],
+		];
+	}
 
-	public function create($id = null) {
-    	if($this->validate()){
-		    if($id){
-		    	$model = self::findOne($id);
-		    }  else{
-		    	$model = new self();
-		    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function attributeLabels() {
+		return [
+			'id'          => Yii::t( 'app', 'ID' ),
+			'title'       => Yii::t( 'app', 'Title' ),
+			'content'     => Yii::t( 'app', 'Content' ),
+			'slug'        => Yii::t( 'app', 'Slug' ),
+			'cover_image' => Yii::t( 'app', 'Cover Image' ),
+			'image_file'  => Yii::t( 'app', 'Cover Image' ),
+			'categories'  => Yii::t( 'app', 'Categories' ),
+			'tags'        => Yii::t( 'app', 'Tags' ),
+			'created_at'  => Yii::t( 'app', 'Created At' ),
+			'updated_at'  => Yii::t( 'app', 'Updated At' ),
+			'created_by'  => Yii::t( 'app', 'Created By' ),
+		];
+	}
 
-		    $model->title = $this->title;
-		    $model->content = $this->content;
-		    $model->slug = $this->slug;
+	/**
+	 * Gets query for [[CreatedBy]].
+	 *
+	 * @return \yii\db\ActiveQuery
+	 */
+	public function getCreatedBy() {
+		return $this->hasOne( User::class, [ 'id' => 'created_by' ] );
+	}
 
-		    $categories = $_POST['Blog']['categories'];
-		    $categoryIds = [];
+	public function create( $id = null ) {
+		if ( $this->validate() ) {
+			if ( $id ) {
+				$model = self::findOne( $id );
+			} else {
+				$model = new self();
+			}
 
-		    foreach ($categories as $category){
-		    	$category_model = Category::findOne(['id' => $category]);
+			$model->title   = $this->title;
+			$model->content = $this->content;
+			$model->slug    = $this->slug;
 
-		    	if(!$category_model){
-		    		$category_model = new Category();
-		    		$category_model->name = $category;
-		    		$category_model->save();
-			    }
+			$categories  = $_POST['Blog']['categories'];
+			$categoryIds = [];
 
-			    $categoryIds[] = $category_model->id;
-		    }
+			foreach ( $categories as $category ) {
+				$category_model = Category::findOne( [ 'id' => $category ] );
 
-		    $model->categories = json_encode($categoryIds,JSON_NUMERIC_CHECK);
+				if ( ! $category_model ) {
+					$category_model       = new Category();
+					$category_model->name = $category;
+					$category_model->save();
+				}
 
-		    $categories = $_POST['Blog']['tags'];
-		    $categoryIds = [];
+				$categoryIds[] = $category_model->id;
+			}
 
-		    foreach ($categories as $category){
-			    $category_model = Tag::findOne(['id' => $category]);
+			$model->categories = json_encode( $categoryIds, JSON_NUMERIC_CHECK );
 
-			    if(!$category_model){
-				    $category_model = new Tag();
-				    $category_model->name = $category;
-				    $category_model->save();
-			    }
+			$categories  = is_array($_POST['Blog']['tags'])? $_POST['Blog']['tags'] : [];
+			$categoryIds = [];
 
-			    $categoryIds[] = $category_model->id;
-		    }
+			foreach ( $categories as $category ) {
+				$category_model = Tag::findOne( [ 'id' => $category ] );
 
-		    $model->tags = json_encode($categoryIds,JSON_NUMERIC_CHECK);
+				if ( ! $category_model ) {
+					$category_model       = new Tag();
+					$category_model->name = $category;
+					$category_model->save();
+				}
 
-		    $model->save();
-	    }
+				$categoryIds[] = $category_model->id;
+			}
 
-	    return $id;
+			$model->tags = json_encode( $categoryIds, JSON_NUMERIC_CHECK );
+
+			if(is_object($this->image_file)){
+				$filename = 'uploads/' . $this->image_file->baseName.'.' . $this->image_file->extension;
+				$this->image_file->saveAs( Yii::$app->basePath.'/'.$filename );
+
+				$model->cover_image = $filename;
+			}
+
+			$model->save(false);
+
+			return $model->id;
+		}
 	}
 }

@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BlogController implements the CRUD actions for Blog model.
@@ -79,16 +80,23 @@ class BlogController extends Controller {
 		$model = new Blog();
 
 		$categories = Category::find()->all();
-		$tags = Tag::find()->all();
+		$tags       = Tag::find()->all();
 
-		if ( $model->load( Yii::$app->request->post() ) && $id = $model->create() ) {
-			return $this->redirect( [ 'view', 'id' => $id ] );
+		if ( $model->load( Yii::$app->request->post() ) ) {
+
+			$model->image_file = UploadedFile::getInstance( $model, 'image_file' );
+
+			if ( $id = $model->create() ) {
+				return $this->redirect( [ 'view', 'id' => $id ] );
+			}
+
+
 		}
 
 		return $this->render( 'create', [
-			'model' => $model,
-			'categories' => ArrayHelper::map($categories,'id','name'),
-			'tags' => ArrayHelper::map($tags,'id','name'),
+			'model'      => $model,
+			'categories' => ArrayHelper::map( $categories, 'id', 'name' ),
+			'tags'       => ArrayHelper::map( $tags, 'id', 'name' ),
 		] );
 	}
 
@@ -105,19 +113,25 @@ class BlogController extends Controller {
 		$model = $this->findModel( $id );
 
 		$categories = Category::find()->all();
-		$tags = Tag::find()->all();
+		$tags       = Tag::find()->all();
 
-		$model->categories = json_decode($model->categories);
-		$model->tags = json_decode($model->tags);
+		$model->categories = json_decode( $model->categories );
+		$model->tags       = json_decode( $model->tags );
 
-		if ( $model->load( Yii::$app->request->post() ) && $model->create($id) ) {
-			return $this->redirect( [ 'view', 'id' => $model->id ] );
+		if ( $model->load( Yii::$app->request->post() ) && $model->create( $id ) ) {
+
+			$model->image_file = UploadedFile::getInstance( $model, 'image_file' );
+
+			if ($model->create($id) ) {
+				return $this->redirect( [ 'view', 'id' => $id ] );
+			}
+
 		}
 
 		return $this->render( 'update', [
-			'model' => $model,
-			'categories' => ArrayHelper::map($categories,'id','name'),
-			'tags' => ArrayHelper::map($tags,'id','name'),
+			'model'      => $model,
+			'categories' => ArrayHelper::map( $categories, 'id', 'name' ),
+			'tags'       => ArrayHelper::map( $tags, 'id', 'name' ),
 		] );
 	}
 
