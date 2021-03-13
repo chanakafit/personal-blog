@@ -9,5 +9,5 @@ return [
     'user.passwordMinLength' => 8,
     'supportEmail' => 'hello@chanakalk.com',
 
-	'editor' => 'wysiwyg',  //To enable WYSIWYG editor, set this value 'wysiwyg'. Default to markdown
+	'editor' => 'markdown',  //To enable WYSIWYG editor, set this value 'wysiwyg'. Default to markdown
 ];

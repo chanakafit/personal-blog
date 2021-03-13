@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%blog}}".
@@ -20,7 +21,7 @@ use Yii;
  *
  * @property User $createdBy
  */
-class Blog extends \yii\db\ActiveRecord
+class Blog extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -36,12 +37,11 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'content', 'slug', 'cover_image', 'categories'], 'required'],
+            [['title', 'content', 'slug', 'categories'], 'required'],
             [['content'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['created_by'], 'integer'],
-            [['title', 'slug', 'cover_image', 'categories'], 'string', 'max' => 1000],
-            [['tags'], 'string', 'max' => 255],
+            [['title', 'slug', 'cover_image'], 'string', 'max' => 1000],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
         ];
     }
@@ -74,4 +74,56 @@ class Blog extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
+
+	public function create($id = null) {
+    	if($this->validate()){
+		    if($id){
+		    	$model = self::findOne($id);
+		    }  else{
+		    	$model = new self();
+		    }
+
+		    $model->title = $this->title;
+		    $model->content = $this->content;
+		    $model->slug = $this->slug;
+
+		    $categories = $_POST['Blog']['categories'];
+		    $categoryIds = [];
+
+		    foreach ($categories as $category){
+		    	$category_model = Category::findOne(['id' => $category]);
+
+		    	if(!$category_model){
+		    		$category_model = new Category();
+		    		$category_model->name = $category;
+		    		$category_model->save();
+			    }
+
+			    $categoryIds[] = $category_model->id;
+		    }
+
+		    $model->categories = json_encode($categoryIds,JSON_NUMERIC_CHECK);
+
+		    $categories = $_POST['Blog']['tags'];
+		    $categoryIds = [];
+
+		    foreach ($categories as $category){
+			    $category_model = Tag::findOne(['id' => $category]);
+
+			    if(!$category_model){
+				    $category_model = new Tag();
+				    $category_model->name = $category;
+				    $category_model->save();
+			    }
+
+			    $categoryIds[] = $category_model->id;
+		    }
+
+		    $model->tags = json_encode($categoryIds,JSON_NUMERIC_CHECK);
+
+		    $model->save();
+	    }
+
+	    return $id;
+	}
 }

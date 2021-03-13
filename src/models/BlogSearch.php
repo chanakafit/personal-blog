@@ -68,7 +68,7 @@ class BlogSearch extends Blog
             ->andFilterWhere(['like', 'content', $this->content])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'cover_image', $this->cover_image])
-            ->andFilterWhere(['like', 'category', $this->category])
+            ->andFilterWhere(['like', 'categories', $this->categories])
             ->andFilterWhere(['like', 'tags', $this->tags]);
 
         return $dataProvider;

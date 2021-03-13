@@ -1,6 +1,7 @@
 <?php
 
 use kartik\markdown\MarkdownEditor;
+use kartik\select2\Select2;
 use mihaildev\ckeditor\CKEditor;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -8,6 +9,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
 /* @var $form yii\bootstrap\ActiveForm */
+/* @var $categories array */
+/* @var $tags array */
 ?>
 
 
@@ -47,11 +50,27 @@ use yii\helpers\Html;
 
 <?= $form->field( $model, 'slug' )->textInput( [ 'maxlength' => true ] ) ?>
 
-<?= $form->field( $model, 'cover_image' )->textInput( [ 'maxlength' => true ] ) ?>
+<?= $form->field( $model, 'cover_image' )->fileInput() ?>
 
-<?= $form->field( $model, 'category' )->textInput( [ 'maxlength' => true ] ) ?>
+<?= $form->field( $model, 'categories' )->widget(Select2::class, [
+	'data' => $categories,
+	'options' => ['placeholder' => 'Select or add categories... Enter comma or tab to separate...', 'multiple' => true],
+	'pluginOptions' => [
+		'tags' => true,
+		'tokenSeparators' => [','],
+		'maximumInputLength' => 10
+	],
+])->label(Yii::t('app',$model->getAttributeLabel('categories'))); ?>
 
-<?= $form->field( $model, 'tags' )->textInput( [ 'maxlength' => true ] ) ?>
+<?= $form->field( $model, 'tags' )->widget(Select2::class, [
+	'data' => $tags,
+	'options' => ['placeholder' => 'Select or add tags... Enter comma or tab to separate...', 'multiple' => true],
+	'pluginOptions' => [
+		'tags' => true,
+		'tokenSeparators' => [','],
+		'maximumInputLength' => 10
+	],
+])->label(Yii::t('app',$model->getAttributeLabel('tags'))); ?>
 
 <div class="form-group">
 	<?= Html::submitButton( Yii::t( 'app', 'Save' ), [ 'class' => 'btn btn-success' ] ) ?>

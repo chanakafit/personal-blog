@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Category;
+use app\models\Tag;
 use Yii;
 use app\models\Blog;
 use app\models\BlogSearch;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -75,12 +78,17 @@ class BlogController extends Controller {
 	public function actionCreate() {
 		$model = new Blog();
 
-		if ( $model->load( Yii::$app->request->post() ) && $model->save() ) {
-			return $this->redirect( [ 'view', 'id' => $model->id ] );
+		$categories = Category::find()->all();
+		$tags = Tag::find()->all();
+
+		if ( $model->load( Yii::$app->request->post() ) && $id = $model->create() ) {
+			return $this->redirect( [ 'view', 'id' => $id ] );
 		}
 
 		return $this->render( 'create', [
 			'model' => $model,
+			'categories' => ArrayHelper::map($categories,'id','name'),
+			'tags' => ArrayHelper::map($tags,'id','name'),
 		] );
 	}
 
@@ -96,12 +104,20 @@ class BlogController extends Controller {
 	public function actionUpdate( $id ) {
 		$model = $this->findModel( $id );
 
-		if ( $model->load( Yii::$app->request->post() ) && $model->save() ) {
+		$categories = Category::find()->all();
+		$tags = Tag::find()->all();
+
+		$model->categories = json_decode($model->categories);
+		$model->tags = json_decode($model->tags);
+
+		if ( $model->load( Yii::$app->request->post() ) && $model->create($id) ) {
 			return $this->redirect( [ 'view', 'id' => $model->id ] );
 		}
 
 		return $this->render( 'update', [
 			'model' => $model,
+			'categories' => ArrayHelper::map($categories,'id','name'),
+			'tags' => ArrayHelper::map($tags,'id','name'),
 		] );
 	}
 

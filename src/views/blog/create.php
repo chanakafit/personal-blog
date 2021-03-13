@@ -4,9 +4,11 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
+/* @var $categories array */
+/* @var $tags array */
 
 $this->title                   = Yii::t( 'app', 'Create Blog' );
-$this->params['breadcrumbs'][] = [ 'label' => Yii::t( 'app', 'Blogs' ), 'url' => [ 'index' ] ];
+$this->params['breadcrumbs'][] = [ 'label' => Yii::t( 'app', 'Blog' ), 'url' => [ 'index' ] ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main id="main">
@@ -20,6 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
 				<?= $this->render( '_form', [
 					'model' => $model,
+					'categories' => $categories,
+					'tags' => $tags,
 				] ) ?>
 
             </div>

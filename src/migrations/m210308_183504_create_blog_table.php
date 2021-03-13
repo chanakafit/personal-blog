@@ -18,7 +18,7 @@ class m210308_183504_create_blog_table extends Migration {
 			'slug'        => $this->string( 1000 )->notNull(),
 			'cover_image' => $this->string( 1000 )->notNull(),
 			'category'    => $this->string( 1000 )->notNull(),
-			'tags'        => $this->string(),
+			'tags'        => $this->string(1000),
 			'created_at'  => Schema::TYPE_TIMESTAMP . ' DEFAULT CURRENT_TIMESTAMP',
 			'updated_at'  => Schema::TYPE_TIMESTAMP . ' DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 			'created_by'  => $this->integer()
