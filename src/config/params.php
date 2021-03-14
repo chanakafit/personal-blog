@@ -10,4 +10,11 @@ return [
     'supportEmail' => 'hello@chanakalk.com',
 
 	'editor' => 'markdown',  //To enable WYSIWYG editor, set this value 'wysiwyg'. Default to markdown
+
+	'about' => [
+		'experience_started' => 2016,    //this will calculate experience with current year
+		'so_reputation' => 797,
+		'awards' => 2,
+		'projects' => 6
+	]
 ];

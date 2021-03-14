@@ -4,7 +4,7 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::$app->name.' | About';
+$this->title                   = Yii::$app->name . ' | About';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <main id="main">
@@ -267,25 +267,32 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row counters">
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1"
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="<?= date( 'Y' ) - Yii::$app->params['about']['experience_started'] ?>"
+                          data-purecounter-duration="2"
                           class="purecounter"></span>
                     <p>Years Experience</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="762" data-purecounter-duration="1"
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="<?= Yii::$app->params['about']['so_reputation'] ?>"
+                          data-purecounter-duration="2"
                           class="purecounter"></span>
                     <p>Stack Overflow Reputation</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1"
+                    <span data-purecounter-start="0" data-purecounter-end="<?= Yii::$app->params['about']['awards'] ?>"
+                          data-purecounter-duration="2"
                           class="purecounter"></span>
                     <p>Awards</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1"
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="<?= Yii::$app->params['about']['projects'] ?>"
+                          data-purecounter-duration="2"
                           class="purecounter"></span>
                     <p>Projects</p>
                 </div>
@@ -311,7 +318,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class="swiper-slide">
                         <div class="testimonial-item">
-                            <img src="<?= Yii::$app->urlManager->baseUrl?>/theme/assets/img/freelancer.png" class="testimonial-img" alt="">
+                            <img src="<?= Yii::$app->urlManager->baseUrl ?>/theme/assets/img/freelancer.png"
+                                 class="testimonial-img" alt="">
                             <h3>Brandicon S.</h3>
                             <h4><a href="http://egypt.asatsa.com/">Asatsa</a></h4>
                             <p>
