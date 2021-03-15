@@ -317,20 +317,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="swiper-wrapper">
 
                     <div class="swiper-slide">
+                        <?php foreach ( Yii::$app->params['about']['testimonials'] as $testimonial ) : ?>
                         <div class="testimonial-item">
-                            <img src="<?= Yii::$app->urlManager->baseUrl ?>/theme/assets/img/freelancer.png"
+                            <img src="<?= Yii::$app->urlManager->baseUrl ?>/theme/assets/img/<?= $testimonial['img'] ?>"
                                  class="testimonial-img" alt="">
-                            <h3>Brandicon S.</h3>
-                            <h4><a href="http://egypt.asatsa.com/">Asatsa</a></h4>
+                            <h3><?=$testimonial['name'] ?></h3>
+                            <h4><a href="<?= $testimonial['link']?>"><?= $testimonial['company']?></a></h4>
                             <p>
                                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Great developer! Was a complicated job to work with collecting data from 2 old sites and
-                                connecting it with a totally new theme and plugins. But he never gave up and found the
-                                solution. He managed to save us months of work by finding the solution and importing the
-                                data. Bravo!
+                                G<?= $testimonial['review']?>
                                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                             </p>
                         </div>
+                        <?php endforeach; ?>
                     </div><!-- End testimonial item -->
 
                 </div>
